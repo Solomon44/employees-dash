@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import faker from 'faker';
+// import faker from 'faker';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -42,23 +42,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//rendering fake user for testing
-let USERS = [];
+//rendering fake users for testing
+// let USERS = [];
 
-for (let i = 0; i < 15; i++) {
-  USERS[i] = {
-    name: faker.name.findName(),
-    email: faker.internet.email(),
-    phone: faker.phone.phoneNumber(),
-    jobTitle: faker.name.jobTitle(),
-    company: faker.company.companyName(),
-    department: faker.commerce.department(),
-    joinDate: faker.date.past().toLocaleDateString('en-US'),
-  };
-}
+// for (let i = 0; i < 15; i++) {
+//   USERS[i] = {
+//     name: faker.name.findName(),
+//     email: faker.internet.email(),
+//     phone: faker.phone.phoneNumber(),
+//     jobTitle: faker.name.jobTitle(),
+//     company: faker.company.companyName(),
+//     department: faker.commerce.department(),
+//     joinDate: faker.date.past().toLocaleDateString('en-US'),
+//   };
+// }
+// console.dir(USERS);
 
+let EMPLOYEES = [];
 //material ui table to render users
-const MuiUsersTable = (props) => {
+const MuiEmployeesTable = (props) => {
+  console.dir(props.users);
+  EMPLOYEES = props.users;
+  console.dir(EMPLOYEES);
+  // const [data, setUSERS] = useState(props.users);
+  // console.log(data);
+  // console.log(props.users);
   //pagination state
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -89,7 +97,7 @@ const MuiUsersTable = (props) => {
           </TableHead>
 
           <TableBody>
-            {USERS.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
+            {EMPLOYEES?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
               <TableRow key={row.name}>
                 <TableCell component='th' scope='row'>
                   <Grid container>
@@ -141,4 +149,4 @@ const MuiUsersTable = (props) => {
   );
 };
 
-export default MuiUsersTable;
+export default MuiEmployeesTable;

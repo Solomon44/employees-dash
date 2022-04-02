@@ -5,8 +5,7 @@ import { makeStyles, ThemeProvider } from '@material-ui/core';
 import { createTheme } from '@material-ui/core/styles';
 import Header from '../components/Header';
 import Employees from '../pages/Employees/Employees';
-import EmployeesData from '../pages/Employees/EmployeesData';
-// import DisplayData from '../services/DisplayData';
+import GetUsers from '../graphql/Queries';
 
 const theme = createTheme({
   palette: {
@@ -56,8 +55,8 @@ function App() {
         <div className={classes.appMain}>
           <Header />
           <Employees />
-          <EmployeesData />
-          {/* <DisplayData /> */}
+
+          <GetUsers />
         </div>
       </ThemeProvider>
     </ApolloProvider>
